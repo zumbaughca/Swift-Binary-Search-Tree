@@ -128,6 +128,21 @@ extension BinarySearchTree {
         }
     }
     
+    /*
+     * Consider the tree:
+     *              5
+     *            /   \
+     *          3      7
+     *         / \     /
+     *        2   4   6
+     *
+     * If we want to remove the 7 node, it only has the left child. So we can simply connect the parent, 5, node to the left child, 6.
+     
+     * To remove the 3 node, we need to make sure that after the removal the tree is still valid. The replacement node will be the smallest
+     * the right side of the tree. We remove that node from the tree, and connect it to the current node's left child.
+     * If the current right child is not the successor node (there was at least 1 left branch on the right child), then we connect the
+     * right child of the successor to the current right child. Otherwise, there is no right node.
+     */
     func remove() -> BinarySearchTree? {
         let replacement: BinarySearchTree<T>?
         
